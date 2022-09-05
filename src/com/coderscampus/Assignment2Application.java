@@ -18,7 +18,7 @@ public class Assignment2Application {
 
 			int guessNumber = scan.nextInt();
 
-			if (guessesRemaining == 0) {
+			if (guessesRemaining <= 1) {
 				System.out.println("Sorry You Lost the number was " + randomNumber);
 
 				break;
