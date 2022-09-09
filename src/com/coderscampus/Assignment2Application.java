@@ -21,7 +21,7 @@ public class Assignment2Application {
 
 
                 System.out.println("Guess a number between 1 and 100");
-                System.out.println(randomNumber);
+            
                 guessNumber = scan.nextInt();
 
                 if (guessNumber <= 0 || guessNumber > 100) {
