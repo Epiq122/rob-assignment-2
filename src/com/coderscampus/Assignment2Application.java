@@ -5,40 +5,55 @@ import java.util.Scanner;
 
 public class Assignment2Application {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		Random random = new Random();
-		Scanner scan = new Scanner(System.in);
+        Random random = new Random();
+        Scanner scan = new Scanner(System.in);
+        boolean success = false;
 
-		int randomNumber = random.nextInt(100) + 1;
-		int guessesRemaining = 5;
 
-		while (true) {
-			System.out.println("Guess a number between 1 and 100: ");
+        while (success == false) {
+            int guessesRemaining = 5;
+            int randomNumber = random.nextInt(100) + 1;
+            int guessNumber = 0;
 
-			int guessNumber = scan.nextInt();
+            while (true) {
 
-			if (guessesRemaining <= 1) {
-				System.out.println("Sorry You Lost the number was " + randomNumber);
 
-				break;
-			} else if (guessNumber > randomNumber) {
-				System.out.println("The Number you have entered is too high please try again");
-				guessesRemaining--;
-				System.out.println("You have " + guessesRemaining + " remaining.");
+                System.out.println("Guess a number between 1 and 100");
+                System.out.println(randomNumber);
+                guessNumber = scan.nextInt();
 
-			} else if (guessNumber < randomNumber) {
-				System.out.println("The Number you have entered is too low please try again");
-				guessesRemaining--;
-				System.out.println("You have " + guessesRemaining + " remaining.");
+                if (guessNumber <= 0 || guessNumber > 100) {
 
-			} else if (guessNumber == randomNumber) {
-				System.out.println("Congrats the number was " + randomNumber);
-				break;
-			}
+                    System.out.println("Invalid input please enter a number between 1 and 100");
 
-		}
+                } else if (guessNumber == randomNumber) {
+                    System.out.println("YOU GOT IT ! the number was " + randomNumber);
+                    success = true;
+                    break;
 
-		scan.close();
-	}
+                } else if (guessesRemaining == 1) {
+                    System.out.println("Sorry you lost!");
+                    success = true;
+                    break;
+
+                } else if (guessNumber < randomNumber) {
+                    guessesRemaining--;
+
+                    System.out.println("Sorry your guess was to low please try again");
+                    System.out.println("You have " + guessesRemaining + " guesses remaining !");
+
+                } else if (guessNumber > randomNumber) {
+                    guessesRemaining--;
+
+                    System.out.println("Sorry your guess was to high please try again");
+                    System.out.println("You have " + guessesRemaining + " guesses remaining !");
+                }
+
+            }
+
+
+        }
+    }
 }
